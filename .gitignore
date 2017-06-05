@@ -1,0 +1,19 @@
+*.pyc
+*.log
+scraper_project/
+
+# output
+output.txt
+output_failures.txt
+
+# Environments
+.env
+.venv
+env/
+venv/
+ENV/
+bin/
+lib/
+include/
+selenium/
+pip-selfcheck.json
