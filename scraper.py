@@ -30,7 +30,7 @@ class CitationScraper(object):
 			cite_split = cite_text.split("\n")
 			if cite_split[0] == self._desired_format:
 				return cite_split[1]
-		raise selenium.common.exceptions.NoSuchElementException
+		raise ValueError("ERROR: Format not found!")
 
 	def __del__(self):
 		"""Destructor. Closes browser window regardless of whether

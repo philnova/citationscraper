@@ -9,7 +9,6 @@ may lead to you being temporarily locked out.
 """
 
 from scraper import CitationScraper
-import selenium
 
 if __name__ == "__main__":
 
@@ -31,8 +30,8 @@ if __name__ == "__main__":
 					response = scraper.get_citation()
 					all_citations.append(response.encode('utf-8')) #response is Unicode, not str
 
-				# handle case where paper isn't found
-				except selenium.common.exceptions.NoSuchElementException:
+				# handle case where paper isn't found, timeout, etc.
+				except:
 					failures.append(query)
 
 	all_citations = list(set(all_citations)) # fiter out duplicates
