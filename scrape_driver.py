@@ -1,3 +1,13 @@
+"""
+Driver function for the CitationScraper class
+
+Takes newline-delimited text file of citations to search, and outputs a sorted
+set of unique citations into output.txt. Any failures are logged in output_failures.txt.
+
+N.B. Google Scholar won't be happy about being scraped. Repeated use of this script
+may lead to you being temporarily locked out.
+"""
+
 from scraper import CitationScraper
 import selenium
 

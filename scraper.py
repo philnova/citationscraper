@@ -1,3 +1,11 @@
+"""
+Uses selenium to scrape formatted citations from Google Scholar.
+
+We need to control a real browser instance, rather than just making HTTP requests,
+because the actual citation is hidden behind a modal window. To get it, we need
+to interact with JavaScript on the Scholar page, so we need a zombie browser.
+"""
+
 from selenium import webdriver
 
 class CitationScraper(object):
@@ -25,6 +33,8 @@ class CitationScraper(object):
 		raise selenium.common.exceptions.NoSuchElementException
 
 	def __del__(self):
+		"""Destructor. Closes browser window regardless of whether
+		we finished gracefully or threw and error."""
 		self._driver.close()
 
 
