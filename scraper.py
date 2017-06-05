@@ -34,7 +34,7 @@ class CitationScraper(object):
 
 	def __del__(self):
 		"""Destructor. Closes browser window regardless of whether
-		we finished gracefully or threw and error."""
+		we finished gracefully or threw an error."""
 		self._driver.close()
 
 
