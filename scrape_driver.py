@@ -9,6 +9,11 @@ may lead to you being temporarily locked out.
 """
 
 from scraper import CitationScraper
+import time
+import random
+
+MAX_DELAY = 30 # build in a sleep time between queries
+# 30 s is pretty long, but longer times stop Google from complaining
 
 if __name__ == "__main__":
 
@@ -20,11 +25,13 @@ if __name__ == "__main__":
 	failures = list()
 
 	with open(to_process, "r") as fo:
+		scraper = CitationScraper("")
+
 		for line in fo:
 			query = line.strip()
 
 			if len(query): # ignore empty lines
-				scraper = CitationScraper(query)
+				scraper.set_paper_name(query)
 
 				try:
 					response = scraper.get_citation()
@@ -33,6 +40,8 @@ if __name__ == "__main__":
 				# handle case where paper isn't found, timeout, etc.
 				except:
 					failures.append(query)
+
+			time.sleep(random.randint(0, MAX_DELAY))
 
 	all_citations = list(set(all_citations)) # fiter out duplicates
 	all_citations.sort()

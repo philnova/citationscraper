@@ -15,6 +15,9 @@ class CitationScraper(object):
 		self._desired_format = desired_format
 		self._driver = webdriver.Chrome()
 
+	def set_paper_name(self, paper_name):
+		self._paper_name = paper_name
+
 	def get_citation(self):
 		query = self._paper_name.replace(" ", "+")
 		url = "https://scholar.google.com/scholar?hl=en&q=" + query
